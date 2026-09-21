@@ -1,0 +1,361 @@
+
+@import "tailwindcss";
+
+/* ========================================
+   Atelier Noura — Design System
+   ======================================== */
+
+@theme {
+  --color-cream: #f8f4ed;
+  --color-ivory: #fffdf9;
+  --color-sand: #e9dfd1;
+  --color-taupe: #b8a18c;
+  --color-brown: #6b4f3f;
+  --color-brown-dark: #3f2d24;
+  --color-rose: #c58f91;
+  --color-rose-light: #f2e2e0;
+  --color-text: #382c26;
+  --color-muted: #81736a;
+  --color-border: #e7ddd2;
+  --color-success: #397454;
+  --color-danger: #b94b4b;
+
+  --font-arabic: var(--font-cairo), sans-serif;
+  --font-latin: var(--font-lato), sans-serif;
+
+  --radius-card: 1rem;
+  --radius-button: 9999px;
+
+  --shadow-soft: 0 8px 30px rgb(63 45 36 / 7%);
+  --shadow-card: 0 12px 36px rgb(63 45 36 / 10%);
+
+  --animate-fade-in: fade-in 600ms ease both;
+  --animate-rise-in: rise-in 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+:root {
+  color-scheme: light;
+  --page-bg: #f8f4ed;
+  --surface: #fffdf9;
+  --foreground: #382c26;
+  --muted-foreground: #81736a;
+  --border-color: #e7ddd2;
+  --focus-ring: #9b7160;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--foreground);
+  font-family: var(--font-arabic), sans-serif;
+  font-size: 1rem;
+  line-height: 1.75;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--color-rose-light);
+  color: var(--color-brown-dark);
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* ========================================
+   Language and direction
+   ======================================== */
+
+html[lang="ar"] body {
+  font-family: var(--font-arabic), sans-serif;
+}
+
+html[lang="fr"] body {
+  font-family: var(--font-latin), sans-serif;
+}
+
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="ltr"] {
+  text-align: left;
+}
+
+.font-arabic {
+  font-family: var(--font-arabic), sans-serif;
+}
+
+.font-latin {
+  font-family: var(--font-latin), sans-serif;
+}
+
+/* ========================================
+   Reusable surfaces
+   ======================================== */
+
+.page-container {
+  width: min(100% - 2rem, 80rem);
+  margin-inline: auto;
+}
+
+.section-spacing {
+  padding-block: clamp(3rem, 7vw, 6rem);
+}
+
+.section-heading {
+  margin: 0;
+  color: var(--color-brown-dark);
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.section-description {
+  max-width: 42rem;
+  margin-top: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.surface-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.soft-divider {
+  height: 1px;
+  border: 0;
+  background: var(--border-color);
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+
+.btn {
+  display: inline-flex;
+  min-height: 2.9rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-button);
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.btn-primary {
+  background: var(--color-brown);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-brown-dark);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  border-color: var(--color-brown);
+  background: transparent;
+  color: var(--color-brown);
+}
+
+.btn-secondary:hover {
+  background: var(--color-rose-light);
+}
+
+.btn-soft {
+  background: var(--color-sand);
+  color: var(--color-brown-dark);
+}
+
+.btn-soft:hover {
+  background: var(--color-rose-light);
+}
+
+/* ========================================
+   Form controls
+   ======================================== */
+
+.form-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--color-brown-dark);
+  font-size: 0.925rem;
+  font-weight: 600;
+}
+
+.form-control {
+  width: 100%;
+  min-height: 2.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  padding: 0.7rem 0.9rem;
+  color: var(--foreground);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.form-control::placeholder {
+  color: #a4978d;
+}
+
+.form-control:focus {
+  border-color: var(--focus-ring);
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(155 113 96 / 14%);
+}
+
+.form-control[aria-invalid="true"] {
+  border-color: var(--color-danger);
+}
+
+/* ========================================
+   Product imagery
+   ======================================== */
+
+.product-image-frame {
+  overflow: hidden;
+  background: var(--color-sand);
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.035);
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 600ms ease both;
+}
+
+.animate-rise-in {
+  animation: rise-in 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* ========================================
+   Accessibility
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   Responsive adjustments
+   ======================================== */
+
+@media (min-width: 768px) {
+  .page-container {
+    width: min(100% - 3rem, 80rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    width: min(100% - 1.25rem, 80rem);
+  }
+
+  .btn {
+    min-height: 2.75rem;
+    padding-inline: 1.15rem;
+  }
+}
